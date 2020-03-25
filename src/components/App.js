@@ -16,11 +16,11 @@ import {
   Divider
 } from "semantic-ui-react";
 
-import PatientMonitoring from "./components/PatientMonitoring";
-import InfectionControl from "./components/InfectionControl";
-import ReportedSymptoms from "./components/Reported Symptoms";
-import HospitalCapacity from "./components/HospitalCapacity";
-import WaitingList from "./components/WaitingList";
+import PatientMonitoring from "./PatientMonitoring";
+import InfectionControl from "./InfectionControl";
+import ReportedSymptoms from "./Reported Symptoms";
+import HospitalCapacity from "./HospitalCapacity";
+import WaitingList from "./WaitingList";
 
 export default class App extends Component {
   state = { activeItem: "home" };
