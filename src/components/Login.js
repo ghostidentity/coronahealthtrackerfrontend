@@ -32,7 +32,7 @@ class Login extends Component {
           authenticated: false,
           submitted: true
       }
-      
+
     }
 
     handleSubmit = (e) => {
@@ -46,7 +46,7 @@ class Login extends Component {
           });
       }
 
-      if (formError == true) {
+      if (formError === true) {
           this.setState({
               error: true
           });
