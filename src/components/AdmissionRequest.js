@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Tab } from "semantic-ui-react";
+import { Grid, Label, Segment, Tab } from "semantic-ui-react";
 import PickUpStatus from "./PickUpStatus";
 import WaitingList from "./WaitingList";
 
@@ -13,10 +13,16 @@ class AdmissionRequest extends Component {
       <Tab.Pane>
         <Grid>
           <Grid.Column width={8}>
-                <WaitingList />
+            <Segment>
+              <Label attached="top">Waiting list</Label>
+              <WaitingList />
+            </Segment>
           </Grid.Column>
           <Grid.Column width={8}>
-            <PickUpStatus />
+            <Segment>
+              <Label attached="top">Pickup Queue</Label>
+              <PickUpStatus />
+            </Segment>
           </Grid.Column>
         </Grid>
       </Tab.Pane>
