@@ -63,9 +63,12 @@ export default function Homepage() {
       </Grid.Row>
       <Grid.Row>
         <Grid.Column width={16}>
-          <Segment>
-            Enhance community quarantine nationwide, effective today.
-          </Segment>
+          <Message
+            attached
+            content="Enhance community quarantine effective today."
+            color="red"
+          />
+          <Divider hidden />
         </Grid.Column>
 
         <Grid.Column width={16}>
