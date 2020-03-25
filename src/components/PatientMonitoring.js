@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Button, Checkbox, Icon, Table, Tab, Menu } from "semantic-ui-react";
+import { Button, Icon, Menu, Tab, Table } from "semantic-ui-react";
 
-class ReportedSymptoms extends Component {
+class PatientMonitoring extends Component {
   state = {};
   render() {
     return (
@@ -9,27 +9,39 @@ class ReportedSymptoms extends Component {
         <Table compact celled>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Username</Table.HeaderCell>
+              <Table.HeaderCell>Patient ID</Table.HeaderCell>
+              <Table.HeaderCell>Patient Name</Table.HeaderCell>
+              <Table.HeaderCell>Gender</Table.HeaderCell>
               <Table.HeaderCell>Age</Table.HeaderCell>
               <Table.HeaderCell>Address</Table.HeaderCell>
-              <Table.HeaderCell>Symptom</Table.HeaderCell>
-              <Table.HeaderCell>Started On</Table.HeaderCell>
-              <Table.HeaderCell>Date Reported</Table.HeaderCell>
+              <Table.HeaderCell>Test Result</Table.HeaderCell>
+              <Table.HeaderCell>Viral Strain</Table.HeaderCell>
+              <Table.HeaderCell>Status</Table.HeaderCell>
+              <Table.HeaderCell>Hospital</Table.HeaderCell>
+              <Table.HeaderCell>Admission Date</Table.HeaderCell>
+              <Table.HeaderCell>Discharged Date</Table.HeaderCell>
               <Table.HeaderCell>Action</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
           <Table.Body>
             <Table.Row>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
+              <Table.Cell>1</Table.Cell>
+              <Table.Cell>Danica Reyes</Table.Cell>
+              <Table.Cell>Female</Table.Cell>
+              <Table.Cell>17</Table.Cell>
+              <Table.Cell>Makati, Philippines</Table.Cell>
+              <Table.Cell>Positive</Table.Cell>
+              <Table.Cell>S Type</Table.Cell>
+              <Table.Cell>Recovering</Table.Cell>
+              <Table.Cell>St. Lukes Hospital</Table.Cell>
+              <Table.Cell>March 23, 2019</Table.Cell>
+              <Table.Cell>March 24, 2019</Table.Cell>
               <Table.Cell>
-                <Button> Update Status</Button>
-                <Button> Delete </Button>
+                <Button.Group basic fluid>
+                  <Button>Update</Button>
+                  <Button>Delete</Button>
+                </Button.Group>
               </Table.Cell>
             </Table.Row>
           </Table.Body>
@@ -44,7 +56,7 @@ class ReportedSymptoms extends Component {
                   primary
                   size="small"
                 >
-                  <Icon name="user" /> Add Symptom
+                  <Icon name="user" /> Add Patient
                 </Button>
                 <Menu floated="right" pagination>
                   <Menu.Item as="a" icon>
@@ -67,4 +79,4 @@ class ReportedSymptoms extends Component {
   }
 }
 
-export default ReportedSymptoms;
+export default PatientMonitoring;

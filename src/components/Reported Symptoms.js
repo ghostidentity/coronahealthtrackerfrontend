@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Button, Checkbox, Icon, Table, Tab, Menu } from "semantic-ui-react";
+import { Button, Icon, Menu, Tab, Table } from "semantic-ui-react";
 
-class InfectionControl extends Component {
+class ReportedSymptoms extends Component {
   state = {};
   render() {
     return (
@@ -9,13 +9,12 @@ class InfectionControl extends Component {
         <Table compact celled>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Location</Table.HeaderCell>
-              <Table.HeaderCell>Alert Level</Table.HeaderCell>
-              <Table.HeaderCell>PUI</Table.HeaderCell>
-              <Table.HeaderCell>PUM</Table.HeaderCell>
-              <Table.HeaderCell>Infected</Table.HeaderCell>
-              <Table.HeaderCell>Recovered</Table.HeaderCell>
-              <Table.HeaderCell>Last Updated On </Table.HeaderCell>
+              <Table.HeaderCell>Username</Table.HeaderCell>
+              <Table.HeaderCell>Age</Table.HeaderCell>
+              <Table.HeaderCell>Address</Table.HeaderCell>
+              <Table.HeaderCell>Symptom</Table.HeaderCell>
+              <Table.HeaderCell>Started On</Table.HeaderCell>
+              <Table.HeaderCell>Date Reported</Table.HeaderCell>
               <Table.HeaderCell>Action</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
@@ -28,10 +27,11 @@ class InfectionControl extends Component {
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
               <Table.Cell>
-                <Button> Update Status</Button>
-                <Button> Delete </Button>
+                <Button.Group basic fluid>
+                  <Button>Update</Button>
+                  <Button>Delete</Button>
+                </Button.Group>
               </Table.Cell>
             </Table.Row>
           </Table.Body>
@@ -46,7 +46,7 @@ class InfectionControl extends Component {
                   primary
                   size="small"
                 >
-                  <Icon name="user" /> Add Location
+                  <Icon name="user" /> Add Symptom
                 </Button>
                 <Menu floated="right" pagination>
                   <Menu.Item as="a" icon>
@@ -69,4 +69,4 @@ class InfectionControl extends Component {
   }
 }
 
-export default InfectionControl;
+export default ReportedSymptoms;

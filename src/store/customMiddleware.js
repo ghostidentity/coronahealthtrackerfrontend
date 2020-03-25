@@ -6,6 +6,7 @@ export const customMiddleware = store => next => action => {
                 action: action.api,
                 param: action.payload
             };
+            store.dispatch(payload);
             break;
         default:
             return next(action);

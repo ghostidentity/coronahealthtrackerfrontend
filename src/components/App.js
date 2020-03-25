@@ -1,26 +1,10 @@
 import React, { Component } from "react";
-import {
-  Grid,
-  Menu,
-  Tab,
-  Icon,
-  Image,
-  Item,
-  Button,
-  Message,
-  Segment,
-  Statistic,
-  Label,
-  Table,
-  TextArea,
-  Divider
-} from "semantic-ui-react";
-
-import PatientMonitoring from "./PatientMonitoring";
-import InfectionControl from "./InfectionControl";
-import ReportedSymptoms from "./Reported Symptoms";
+import { Divider, Grid, Label, Menu, Message, Segment, Tab } from "semantic-ui-react";
 import HospitalCapacity from "./HospitalCapacity";
-import WaitingList from "./WaitingList";
+import InfectionControl from "./InfectionControl";
+import PatientMonitoring from "./PatientMonitoring";
+import ReportedSymptoms from "./Reported Symptoms";
+import AdmissionRequest from "./AdmissionRequest";
 
 export default class App extends Component {
   state = { activeItem: "home" };
@@ -35,16 +19,16 @@ export default class App extends Component {
         menuItem: {
           key: "users",
           icon: "users",
-          content: "Admission Request",
+          content: "Admission",
           position: "left"
         },
-        render: () => <WaitingList />
+        render: () => <AdmissionRequest />
       },
       {
         menuItem: {
           key: "patient",
           icon: "users",
-          content: "Patient Monitoring",
+          content: "Monitoring",
           position: "left"
         },
         render: () => <PatientMonitoring />
@@ -53,7 +37,7 @@ export default class App extends Component {
         menuItem: {
           key: "infection",
           icon: "users",
-          content: "Infection Control",
+          content: "Control",
           position: "left"
         },
         render: () => <InfectionControl />
@@ -62,7 +46,7 @@ export default class App extends Component {
         menuItem: {
           key: "symptoms",
           icon: "users",
-          content: "Reported Symptoms",
+          content: "Reported",
           position: "left"
         },
         render: () => <ReportedSymptoms />
@@ -71,7 +55,7 @@ export default class App extends Component {
         menuItem: {
           key: "hospital",
           icon: "users",
-          content: "Hospital Capacity",
+          content: "Hospital",
           position: "left"
         },
         render: () => (
@@ -84,7 +68,7 @@ export default class App extends Component {
         menuItem: {
           key: "public",
           icon: "users",
-          content: "Public Advisory",
+          content: "Advisory",
           position: "left",
           disabled: "true"
         },
@@ -92,19 +76,9 @@ export default class App extends Component {
       },
       {
         menuItem: {
-          key: "user",
-          icon: "users",
-          content: "User Management",
-          position: "left",
-          disabled: "true"
-        },
-        render: () => <Tab.Pane>User Management</Tab.Pane>
-      },
-      {
-        menuItem: {
           key: "vaccine",
           icon: "users",
-          content: "Vaccine Status",
+          content: "Vaccine",
           position: "left",
           disabled: "true"
         },
@@ -127,13 +101,13 @@ export default class App extends Component {
           </Menu.Menu>
         </Menu>
 
-        <Grid>
+        <Grid columns="equal" divided>
           <Grid.Row>
             <Grid.Column width={16}>
               <Message visible>Welcome, Mark!</Message>
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row>
+          <Grid.Row stretched>
             <Grid.Column width={3}>
               <Segment>
                 <Segment.Group raised>
@@ -155,19 +129,18 @@ export default class App extends Component {
                     Died: 3099
                   </Segment>
                 </Segment.Group>
-
               </Segment>
             </Grid.Column>
             <Grid.Column width={13}>
               <Tab
-                menu={{ fluid: true, vertical: false, tabular: true }}
+                menu={{ fluid: true, tabular: true }}
                 panes={panes}
                 defaultActiveIndex={0}
               />
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row>
+          <Grid.Row stretched>
             <Grid.Column width={16}>
               <Divider />
             </Grid.Column>
