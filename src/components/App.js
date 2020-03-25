@@ -4,8 +4,7 @@ import HospitalCapacity from "./HospitalCapacity";
 import InfectionControl from "./InfectionControl";
 import PatientMonitoring from "./PatientMonitoring";
 import ReportedSymptoms from "./Reported Symptoms";
-import WaitingList from "./WaitingList";
-
+import AdmissionRequest from "./AdmissionRequest";
 
 export default class App extends Component {
   state = { activeItem: "home" };
@@ -23,7 +22,7 @@ export default class App extends Component {
           content: "Admission",
           position: "left"
         },
-        render: () => <WaitingList />
+        render: () => <AdmissionRequest />
       },
       {
         menuItem: {
@@ -102,8 +101,8 @@ export default class App extends Component {
           </Menu.Menu>
         </Menu>
 
-        <Grid columns='equal' divided>
-          <Grid.Row >
+        <Grid columns="equal" divided>
+          <Grid.Row>
             <Grid.Column width={16}>
               <Message visible>Welcome, Mark!</Message>
             </Grid.Column>
@@ -130,7 +129,6 @@ export default class App extends Component {
                     Died: 3099
                   </Segment>
                 </Segment.Group>
-
               </Segment>
             </Grid.Column>
             <Grid.Column width={13}>
