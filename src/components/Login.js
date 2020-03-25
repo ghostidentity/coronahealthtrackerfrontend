@@ -14,8 +14,126 @@ import * as user from "../actions/UserActions";
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+      
+
+        this.state = {
+          credentials: {
+              username: "",
+              password: "",
+          },
+          usernameNotValid: false,
+          passwordNotValid: false,
+          invalidCredential: false,
+          errors: {
+              usernameError: "",
+              passwordError: ""
+          },
+          error: false,
+          authenticated: false,
+          submitted: true
+      }
+      
     }
+
+    handleSubmit = (e) => {
+      e.preventDefault();
+
+      const formError = this.validate();
+
+      if (this.state.invalidCredential) {
+          this.setState({
+              error: true
+          });
+      }
+
+      if (formError == true) {
+          this.setState({
+              error: true
+          });
+          console.log("Errors: " + JSON.stringify(this.state.errors));
+      } else {
+          this.setState({
+              error: false
+          }, () =>
+                  (
+                      this.props.submitUser({ 'credentials': this.state.credentials, }),
+                      this.setState({ "submitted": true })
+                  )
+          );
+      }
+  }
+
+  validate = () => {
+      let isError = false;
+      const temp = {};
+
+      let _usernameNotValid = false;
+      let _passwordNotValid = false;
+      if (this.state.credentials.username.length < 5) {
+          isError = true;
+          _usernameNotValid = true;
+          temp.usernameError = "User name needs to be atleast 5 characters longs";
+      }
+
+      if (this.state.credentials.password.length < 5) {
+          isError = true;
+          _passwordNotValid = true;
+          temp.passwordError = "Password needs to be atleast 5 characters longs";
+      }
+
+      this.setState({
+          usernameNotValid: _usernameNotValid,
+          passwordNotValid: _passwordNotValid,
+          errors: {
+              usernameError: temp.usernameError,
+              passwordError: temp.passwordError
+          }
+      });
+
+
+
+      return isError;
+  }
+  onInputChange = (e) => {
+
+      if (this.state.invalidCredential) {
+          this.props.clearViolation();
+
+          this.setState({
+              invalidCredential: false,
+              error: false
+          })
+      }
+
+
+      let value = e.target.value
+      switch (e.target.name) {
+          case "username":
+              this.setState((prevState, props) => (
+                  {
+                      credentials: {
+                          username: value,
+                          password: prevState.credentials.password
+                      }, ...prevState.credentials
+                  }))
+              break;
+          case "password":
+
+              this.setState((prevState, props) => (
+                  {
+                      credentials: {
+                          username: prevState.credentials.username,
+                          password: value
+                      }, ...prevState.credentials
+                  }))
+              break;
+          default:
+              break;
+      }
+
+
+
+  }
     render() {
 
         let errorOutput;
