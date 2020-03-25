@@ -83,6 +83,8 @@ class MainForm extends Component {
                     'phone': this.state.phone
                 })
                 return <Success />
+            default:
+                
         }
 
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Divider, Form, Menu, Dropdown } from 'semantic-ui-react';
+import { Button, Divider, Dropdown, Form } from 'semantic-ui-react';
 
 const options = [
     { key: 1, text: 'Male', value: 1 },

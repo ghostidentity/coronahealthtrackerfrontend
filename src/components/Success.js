@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
-import { Container, Icon, Label, Dimmer, Loader } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
+import { Dimmer, Loader } from 'semantic-ui-react';
 
 class Success extends Component {
 
