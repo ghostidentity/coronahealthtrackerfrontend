@@ -29,39 +29,41 @@ class HospitalCapacity extends Component {
             <Table.Cell></Table.Cell>
             <Table.Cell></Table.Cell>
             <Table.Cell>
-              <Button> Update Status</Button>
-              <Button> Delete </Button>
+              <Button.Group basic fluid>
+                <Button>Update</Button>
+                <Button>Delete</Button>
+              </Button.Group>
             </Table.Cell>
           </Table.Row>
         </Table.Body>
 
         <Table.Footer fullWidth>
-            <Table.Row>
-              <Table.HeaderCell colSpan="12">
-                <Button
-                  floated="left"
-                  icon
-                  labelPosition="left"
-                  primary
-                  size="small"
-                >
-                  <Icon name="user" /> Add Hospital
-                </Button>
-                <Menu floated="right" pagination>
-                  <Menu.Item as="a" icon>
-                    <Icon name="chevron left" />
-                  </Menu.Item>
-                  <Menu.Item as="a">1</Menu.Item>
-                  <Menu.Item as="a">2</Menu.Item>
-                  <Menu.Item as="a">3</Menu.Item>
-                  <Menu.Item as="a">4</Menu.Item>
-                  <Menu.Item as="a" icon>
-                    <Icon name="chevron right" />
-                  </Menu.Item>
-                </Menu>
-              </Table.HeaderCell>
-            </Table.Row>
-          </Table.Footer>
+          <Table.Row>
+            <Table.HeaderCell colSpan="12">
+              <Button
+                floated="left"
+                icon
+                labelPosition="left"
+                primary
+                size="small"
+              >
+                <Icon name="user" /> Add Hospital
+              </Button>
+              <Menu floated="right" pagination>
+                <Menu.Item as="a" icon>
+                  <Icon name="chevron left" />
+                </Menu.Item>
+                <Menu.Item as="a">1</Menu.Item>
+                <Menu.Item as="a">2</Menu.Item>
+                <Menu.Item as="a">3</Menu.Item>
+                <Menu.Item as="a">4</Menu.Item>
+                <Menu.Item as="a" icon>
+                  <Icon name="chevron right" />
+                </Menu.Item>
+              </Menu>
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Footer>
       </Table>
     );
   }

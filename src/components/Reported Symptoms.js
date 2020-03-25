@@ -28,8 +28,10 @@ class ReportedSymptoms extends Component {
               <Table.Cell></Table.Cell>
               <Table.Cell></Table.Cell>
               <Table.Cell>
-                <Button> Update Status</Button>
-                <Button> Delete </Button>
+                <Button.Group basic fluid>
+                  <Button>Update</Button>
+                  <Button>Delete</Button>
+                </Button.Group>
               </Table.Cell>
             </Table.Row>
           </Table.Body>

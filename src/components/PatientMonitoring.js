@@ -38,11 +38,12 @@ class PatientMonitoring extends Component {
               <Table.Cell>March 23, 2019</Table.Cell>
               <Table.Cell>March 24, 2019</Table.Cell>
               <Table.Cell>
-                <Button> Update</Button>
-                <Button> Delete</Button>
+                <Button.Group basic fluid>
+                  <Button>Update</Button>
+                  <Button>Delete</Button>
+                </Button.Group>
               </Table.Cell>
             </Table.Row>
-
           </Table.Body>
 
           <Table.Footer fullWidth>
