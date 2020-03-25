@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Checkbox, Icon, Table, Tab, Menu} from "semantic-ui-react";
+import { Button, Icon, Menu, Table } from "semantic-ui-react";
 
 class HospitalCapacity extends Component {
   state = {};

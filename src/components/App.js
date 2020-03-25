@@ -1,26 +1,11 @@
 import React, { Component } from "react";
-import {
-  Grid,
-  Menu,
-  Tab,
-  Icon,
-  Image,
-  Item,
-  Button,
-  Message,
-  Segment,
-  Statistic,
-  Label,
-  Table,
-  TextArea,
-  Divider
-} from "semantic-ui-react";
-
-import PatientMonitoring from "./PatientMonitoring";
-import InfectionControl from "./InfectionControl";
-import ReportedSymptoms from "./Reported Symptoms";
+import { Divider, Grid, Label, Menu, Message, Segment, Tab } from "semantic-ui-react";
 import HospitalCapacity from "./HospitalCapacity";
+import InfectionControl from "./InfectionControl";
+import PatientMonitoring from "./PatientMonitoring";
+import ReportedSymptoms from "./Reported Symptoms";
 import WaitingList from "./WaitingList";
+
 
 export default class App extends Component {
   state = { activeItem: "home" };
@@ -89,16 +74,6 @@ export default class App extends Component {
           disabled: "true"
         },
         render: () => <Tab.Pane>Public Advisory</Tab.Pane>
-      },
-      {
-        menuItem: {
-          key: "user",
-          icon: "users",
-          content: "Users",
-          position: "left",
-          disabled: "true"
-        },
-        render: () => <Tab.Pane>User Management</Tab.Pane>
       },
       {
         menuItem: {

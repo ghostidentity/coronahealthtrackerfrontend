@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Checkbox, Icon, Table, Tab, Menu } from "semantic-ui-react";
+import { Button, Icon, Menu, Tab, Table } from "semantic-ui-react";
 
 class ReportedSymptoms extends Component {
   state = {};

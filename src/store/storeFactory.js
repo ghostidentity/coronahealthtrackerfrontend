@@ -23,6 +23,6 @@ const composeEnhancers = composeWithDevTools({});
 
 
 export default  (initState = {}) =>  createStore(appReducers, initState, composeEnhancers(
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, customMiddleware),
     applyMiddleware(...middleware)
   ));
