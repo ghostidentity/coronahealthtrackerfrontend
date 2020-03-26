@@ -1,6 +1,6 @@
 {
   "name": "healthtracker",
-  "homepage": ".",
+  "homepage": "http://viper/.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
