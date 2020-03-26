@@ -94,6 +94,11 @@ class Login extends Component {
 
       return isError;
   }
+
+  login = (e) => {
+
+  }
+  
   onInputChange = (e) => {
 
       if (this.state.invalidCredential) {

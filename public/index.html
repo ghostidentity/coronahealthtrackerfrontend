@@ -9,8 +9,16 @@
     <meta name="author" content="Mark Tagab">
     <title>nCov Health Tracker</title>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46557668-10"></script>
-    <script src="%PUBLIC_URL%/assets/analytics.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-46557668-10"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-46557668-10');
+</script>
+
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
 
   </head>

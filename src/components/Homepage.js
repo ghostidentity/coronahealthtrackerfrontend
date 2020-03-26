@@ -1,20 +1,23 @@
-import React, { useState, useCallback } from "react";
-import {
-  Grid,
-  Menu,
-  Segment,
-  Button,
-  Container,
-  Divider,
-  Message,
-  Item,
-  Label,
-  Icon,
-  Statistic,
-  Header
-} from "semantic-ui-react";
-import { useTransition, animated } from "react-spring";
+import React, { useCallback, useState } from "react";
+import { animated, useTransition } from "react-spring";
+import { Button, Divider, Grid, Header, Icon, Item, Message, Segment, Statistic } from "semantic-ui-react";
 import "../styles/homepage.css";
+const axios = require('axios').default;
+
+function login() {
+  axios.get('/user?ID=12345')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+}
 
 const advisory = [
   ({ style }) => (
@@ -36,6 +39,7 @@ const advisory = [
 
 export default function Homepage() {
   const [index, set] = useState(0);
+
   const onClick = useCallback(() => set(state => (state + 1) % 3), []);
   const transitions = useTransition(index, p => p, {
     from: { opacity: 0, transform: "translate3d(100%,0,0)" },
@@ -47,13 +51,19 @@ export default function Homepage() {
     <Grid>
       <Grid.Row>
         <Grid.Column width={16}>
-          <Segment clearing size="mini">
+          <Segment clearing>
             <Item>
-              <Button basic floated="right" size="mini" key="mini" icon="key">
+              <Button
+                basic
+                floated="right"
+                size="mini"
+                key="login"
+                onClick={login}
+              >
                 <Icon name="key" />
                 login
               </Button>
-              <Button basic floated="right" size="mini" key="mini" icon="key">
+              <Button basic floated="right" size="mini" key="mini">
                 <Icon name="edit" />
                 register
               </Button>
