@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { animated, useTransition } from "react-spring";
 import { Button, Divider, Grid, Header, Icon, Item, Message, Segment, Statistic } from "semantic-ui-react";
+import axios from "axios";
 import "../styles/homepage.css";
-const axios = require('axios').default;
 
 function login() {
   axios.get('/user?ID=12345')
