@@ -5,7 +5,7 @@ import axios from "axios";
 import "../styles/homepage.css";
 
 function login() {
-  axios.get('/user?ID=12345')
+  axios.get('http://viper/person/admission')
   .then(function (response) {
     // handle success
     console.log(response);
