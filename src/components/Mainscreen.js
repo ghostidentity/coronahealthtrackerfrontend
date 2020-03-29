@@ -111,11 +111,10 @@ export default class Mainscreen extends Component {
             <Grid.Column width={3}>
               <Segment>
                 <Segment.Group raised>
-                  <Label attached="top">Account</Label>
+                  <Label attached="top">Organization</Label>
                   <Segment>
+                    Name: Department of Health <br />
                     Country: Philippines <br />
-                    Organization: Department of Health <br />
-                    Role: Admin
                   </Segment>
                 </Segment.Group>
 
