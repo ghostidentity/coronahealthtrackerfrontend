@@ -1,22 +1,47 @@
 import React, { useCallback, useState } from "react";
 import { animated, useTransition } from "react-spring";
-import { Button, Divider, Grid, Header, Icon, Item, Message, Segment, Statistic } from "semantic-ui-react";
+import {
+  Button,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  Item,
+  Message,
+  Segment,
+  Statistic
+} from "semantic-ui-react";
 import axios from "axios";
 import "../styles/homepage.css";
+import SockJsClient from 'react-stomp';
+
+var hostname = window.location.hostname;
 
 function login() {
-  axios.get('http://viper/person/admission')
+  axios
+    .get("http://viper/api/demo")
+    .then(function(response) {
+      // handle success
+      console.log(response);
+    })
+    .catch(function(error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function() {
+      // always executed
+    });
+}
+
+function sendMessage() {
+  axios.post('http://viper/api/notify', {})
   .then(function (response) {
-    // handle success
     console.log(response);
   })
   .catch(function (error) {
-    // handle error
     console.log(error);
-  })
-  .then(function () {
-    // always executed
   });
+
 }
 
 const advisory = [
@@ -39,7 +64,6 @@ const advisory = [
 
 export default function Homepage() {
   const [index, set] = useState(0);
-
   const onClick = useCallback(() => set(state => (state + 1) % 3), []);
   const transitions = useTransition(index, p => p, {
     from: { opacity: 0, transform: "translate3d(100%,0,0)" },
@@ -49,6 +73,15 @@ export default function Homepage() {
 
   return (
     <Grid>
+      <SockJsClient
+        url={'http://viper/ws'}
+        topics={["/topic/all"]}
+        onMessage={(user) => {  console.log("Received:  " + JSON.stringify(user)) }}
+        ref={ (user) => { console.log("Reference: " + user) }}
+        onConnect={ message => console.log("connected")}
+        onDisconnect={message => console.log("disconnected")}
+      />
+   
       <Grid.Row>
         <Grid.Column width={16}>
           <Segment clearing>
@@ -63,7 +96,7 @@ export default function Homepage() {
                 <Icon name="key" />
                 login
               </Button>
-              <Button basic floated="right" size="mini" key="mini">
+              <Button basic floated="right" size="mini" key="mini" onClick={sendMessage}>
                 <Icon name="edit" />
                 register
               </Button>
