@@ -15,6 +15,8 @@ import securityReducer from './securityReducer';
 import admissionReducer from './admissionReducer';
 import userReducer from './userReducer';
 import organizationReducer from './organizationReducer';
+import advisoryReducer from './advisoryReducer';
+import vaccineReducer from './vaccineReducer';
 
 export default combineReducers({
     application: appReducer,
@@ -31,5 +33,7 @@ export default combineReducers({
     infection: infectionReducer,
     users: userReducer,
     profile: profileReducer,
-    control: controlReducer
+    control: controlReducer,
+    advisory: advisoryReducer,
+    vaccine: vaccineReducer
 });

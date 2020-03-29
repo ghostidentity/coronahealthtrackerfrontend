@@ -70,7 +70,7 @@ export default class Mainscreen extends Component {
           icon: "users",
           content: "Advisory",
           position: "left",
-          disabled: "true"
+          disabled: false
         },
         render: () => <Tab.Pane>Public Advisory</Tab.Pane>
       },
@@ -80,7 +80,7 @@ export default class Mainscreen extends Component {
           icon: "users",
           content: "Vaccine",
           position: "left",
-          disabled: "true"
+          disabled: false
         },
         render: () => <Tab.Pane>Vaccine Status</Tab.Pane>
       }
