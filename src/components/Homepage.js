@@ -80,7 +80,7 @@ export default function Homepage() {
             <Grid.Column width={8}>
               <Container textAlign="right">
                 <Icon name="facebook" size="large" color="grey" onClick={() => console.log("facebook")}/>
-                <Icon name="linkedin" size="large" color="grey" onClick={() => console.log("facebook")}/>
+                <Icon name="linkedin" size="large" color="grey" onClick={() => console.log("linked")}/>
               </Container>
             </Grid.Column>
           </Grid.Row>
