@@ -3,12 +3,34 @@
 clear
 echo "automating output files..."
 
-cp -R build/* ../ncov/skeleton/src/main/resources/public
+#!/bin/sh
 
-echo "files copied to server location"
+case "$(uname -s)" in
 
-cd ../ncov/skeleton
+   Darwin)
+     echo 'Mac OS X'
+     cp -R build/* ../coronahealthtrackerbackend/skeleton/src/main/resources/public
+    cd ../coronahealthtrackerbackend/skeleton
+    #mvn clean install
+     ;;
 
-#mvn clean install
+   Linux)
+     echo 'Linux'
+     cp -R build/* ../ncov/skeleton/src/main/resources/public
+     cd ../ncov/skeleton
+     #mvn clean install
+     ;;
 
-echo "done."
+   CYGWIN*|MINGW32*|MSYS*|MINGW*)
+     echo 'MS Windows'
+     ;;
+
+   # Add here more strings to compare
+   # See correspondence table at the bottom of this answer
+
+   *)
+     echo 'Other OS' 
+     ;;
+esac
+
+echo "Done, files copied to server location"
