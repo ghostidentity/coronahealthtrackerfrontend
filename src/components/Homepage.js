@@ -42,34 +42,51 @@ export default function Homepage() {
   ];
 
   return (
-    <Grid>
-      <Grid.Row>
-        <Grid.Column width={16}>
-          <MenuSection />
-        </Grid.Column>
-      </Grid.Row>
-      <Grid.Row>
-        <Grid.Column width={16}>
-          <MessageSection value="Enhance community quarantine nationwide, effective today." />
-          <Divider hidden />
-        </Grid.Column>
-      </Grid.Row>
-      <Grid.Row>
-        <Grid.Column width={16}>
-          <VaccineSection data={vaccines} />
-        </Grid.Column>
-      </Grid.Row>
-      <Grid.Row>
-        <Grid.Column width={16}>
-          <InfectionSection
-            waiting="23"
-            died="34"
-            recovered="69"
-            infected="60"
-          />
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
+    <React.Fragment>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={16}>
+            <MenuSection />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={16}>
+            <MessageSection value="Enhance community quarantine nationwide, effective today." />
+            <Divider hidden />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={16}>
+            <VaccineSection data={vaccines} />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={16}>
+            <InfectionSection
+              waiting="23"
+              died="34"
+              recovered="69"
+              infected="60"
+            />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+      <footer>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={8}>
+              <Container textAlign="left">Engineered by: Mark Tagab</Container>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <Container textAlign="right">
+                <Icon name="facebook" size="large" color="grey" onClick={() => console.log("facebook")}/>
+                <Icon name="linkedin" size="large" color="grey" onClick={() => console.log("facebook")}/>
+              </Container>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </footer>
+    </React.Fragment>
   );
 }
 
@@ -126,7 +143,7 @@ function MessageSection({ value }) {
     console.log("Message Loaded");
   });
 
-  return <Message attached content={value} color="red" size='big'/>;
+  return <Message attached content={value} color="red" size="big" />;
 }
 
 function VaccineSection({ data }) {
@@ -176,10 +193,7 @@ function InfectionSection({ waiting, infected, recovered, died }) {
   });
 
   return (
-    <Segment
-      color="white"
-      style={{ borderStyle: "solid", borderColor: "grey" }}
-    >
+    <Segment style={{ borderStyle: "solid", borderColor: "grey" }}>
       <Divider horizontal>
         <Header as="h5">
           <Icon name="heartbeat" />
