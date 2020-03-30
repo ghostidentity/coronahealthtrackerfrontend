@@ -44,18 +44,14 @@ export default function Homepage() {
           <MessageSection value="Enhance community quarantine nationwide, effective today." />
           <Divider hidden />
         </Grid.Column>
-
+      </Grid.Row>
+      <Grid.Row>
         <Grid.Column width={16}>
           <VaccineSection data={vaccines} />
         </Grid.Column>
-
+      </Grid.Row>
+      <Grid.Row>
         <Grid.Column width={16}>
-          <Divider horizontal>
-            <Header as="h4">
-              <Icon name="heartbeat" />
-              Local Infections
-            </Header>
-          </Divider>
           <InfectionSection
             waiting="23"
             died="34"
@@ -139,8 +135,8 @@ function VaccineSection({ data }) {
 
   data.map(entry =>
     vaccineItems.push(({ style }) => (
-      <animated.div style={{ ...style, background: "lightblue" }}>
-        <Container textAlign='left'>
+      <animated.div style={{ ...style, background: "#FCFCFC" , color: "blue"   }}>
+        <Container textAlign="justified">
           <Header as="h1">{entry.data.title}</Header>
           <Divider />
           <p>{entry.data.description}</p>
@@ -171,25 +167,32 @@ function InfectionSection({ waiting, infected, recovered, died }) {
   });
 
   return (
-    <Segment>
+    <Segment className="overview" raised color="white">
+      <Divider horizontal>
+        <Header as="h5">
+          <Icon name="heartbeat" />
+          Local Infections
+        </Header>
+      </Divider>
       <Statistic.Group widths="four">
-        <Statistic>
+        <Statistic color="red">
           <Statistic.Value>{infected}</Statistic.Value>
           <Statistic.Label>Infected</Statistic.Label>
         </Statistic>
-        <Statistic>
+        <Statistic color="green">
           <Statistic.Value>{recovered}</Statistic.Value>
           <Statistic.Label>Recovered</Statistic.Label>
         </Statistic>
-        <Statistic>
+        <Statistic color="black">
           <Statistic.Value>{died} </Statistic.Value>
           <Statistic.Label>Died</Statistic.Label>
         </Statistic>
-        <Statistic>
+        <Statistic color="brown">
           <Statistic.Value>{waiting}</Statistic.Value>
           <Statistic.Label>Awaiting Test Result</Statistic.Label>
         </Statistic>
       </Statistic.Group>
+      <Divider />
     </Segment>
   );
 }
