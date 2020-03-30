@@ -167,7 +167,7 @@ function InfectionSection({ waiting, infected, recovered, died }) {
   });
 
   return (
-    <Segment className="overview" raised color="white">
+    <Segment color="white" style={{ borderStyle: "solid", borderColor: "black" }}>
       <Divider horizontal>
         <Header as="h5">
           <Icon name="heartbeat" />
