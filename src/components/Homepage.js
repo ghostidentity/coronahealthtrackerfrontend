@@ -29,6 +29,15 @@ export default function Homepage() {
         status: "Trial Stage",
         release_date: "December 26, 2020"
       }
+    },
+    {
+      data: {
+        title: "BNT162",
+        description:
+          "Gilead is a longtime drugmaker best known for developing the first major cure for hepatitis-C in Sovaldi, a therapy that changed the standard of care for that disease but also kicked off the national debate about drug pricing. The company has experience developing and marketing HIV drugs, including Truvada for pre-exposure prophylaxis (PrEP), its preventive HIV medicine",
+        status: "Planning Stage",
+        release_date: "December 26, 2020"
+      }
     }
   ];
 
@@ -117,7 +126,7 @@ function MessageSection({ value }) {
     console.log("Message Loaded");
   });
 
-  return <Message attached content={value} color="red" />;
+  return <Message attached content={value} color="red" size='big'/>;
 }
 
 function VaccineSection({ data }) {
@@ -135,7 +144,7 @@ function VaccineSection({ data }) {
 
   data.map(entry =>
     vaccineItems.push(({ style }) => (
-      <animated.div style={{ ...style, background: "#FCFCFC" , color: "blue"   }}>
+      <animated.div style={{ ...style, background: "#FCFCFC", color: "blue" }}>
         <Container textAlign="justified">
           <Header as="h1">{entry.data.title}</Header>
           <Divider />
@@ -167,7 +176,10 @@ function InfectionSection({ waiting, infected, recovered, died }) {
   });
 
   return (
-    <Segment color="white" style={{ borderStyle: "solid", borderColor: "black" }}>
+    <Segment
+      color="white"
+      style={{ borderStyle: "solid", borderColor: "grey" }}
+    >
       <Divider horizontal>
         <Header as="h5">
           <Icon name="heartbeat" />
