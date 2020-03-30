@@ -12,108 +12,24 @@ import {
   Statistic
 } from "semantic-ui-react";
 import "../styles/homepage.css";
-import Socket from "./Socket";
 import axios from "axios";
 
-const advisory = [
-  ({ style }) => (
-    <animated.div style={{ ...style, background: "lightblue" }}>
-      Vaccine 1
-    </animated.div>
-  ),
-  ({ style }) => (
-    <animated.div style={{ ...style, background: "lightgreen" }}>
-      Vaccine 2
-    </animated.div>
-  ),
-  ({ style }) => (
-    <animated.div style={{ ...style, background: "lightpink" }}>
-      Vaccine 3
-    </animated.div>
-  )
-];
-
-export default function Homepage(props) {
-  const [index, set] = useState(0);
-  const childRef = useRef();
-
-  useEffect(() => {
-    console.log("Homepage called");
-  });
-
-  const login = () => {
-    axios
-    .get("http://localhost:8080/api/demo")
-    .then(function(response) {
-      // handle success
-      console.log(response);
-    })
-    .catch(function(error) {
-      // handle error
-      console.log(error);
-    })
-    .then(function() {
-      // always executed
-    });
-
-  };
-  const onClick = useCallback(() => set(state => (state + 1) % 3), []);
-  const transitions = useTransition(index, p => p, {
-    from: { opacity: 0, transform: "translate3d(100%,0,0)" },
-    enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
-    leave: { opacity: 0, transform: "translate3d(-50%,0,0)" }
-  });
-
+export default function Homepage() {
   return (
     <Grid>
-      <Socket ref={childRef} />
       <Grid.Row>
         <Grid.Column width={16}>
-          <Segment clearing>
-            <Item>
-              <Button
-                basic
-                floated="right"
-                size="mini"
-                key="login"
-                onClick={ login }
-              >
-                <Icon name="key" />
-                login
-              </Button>
-              <Button
-                basic
-                floated="right"
-                size="mini"
-                key="mini"
-                onClick={() => childRef.current.sendMessage("temp")}
-              >
-                <Icon name="edit" />
-                register
-              </Button>
-            </Item>
-          </Segment>
+          <MenuSection />
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
         <Grid.Column width={16}>
-          <Message
-            attached
-            content="Enhance community quarantine nationwide, effective today."
-            color="red"
-          />
+          <MessageSection value="Enhance community quarantine nationwide, effective today." />
           <Divider hidden />
         </Grid.Column>
 
         <Grid.Column width={16}>
-          <Item className="advisoryRow">
-            <div className="advisory" onClick={onClick}>
-              {transitions.map(({ item, props, key }) => {
-                const Page = advisory[item];
-                return <Page key={key} style={props} />;
-              })}
-            </div>
-          </Item>
+          <VaccineSection />
         </Grid.Column>
 
         <Grid.Column width={16}>
@@ -123,32 +39,142 @@ export default function Homepage(props) {
               Local Infections
             </Header>
           </Divider>
-          <Segment>
-            <Statistic.Group widths="five">
-              <Statistic>
-                <Statistic.Value>8,990</Statistic.Value>
-                <Statistic.Label>PUM</Statistic.Label>
-              </Statistic>
-              <Statistic>
-                <Statistic.Value>5,450</Statistic.Value>
-                <Statistic.Label>PUI</Statistic.Label>
-              </Statistic>
-              <Statistic>
-                <Statistic.Value>60,000</Statistic.Value>
-                <Statistic.Label>Infected</Statistic.Label>
-              </Statistic>
-              <Statistic>
-                <Statistic.Value>86,9849</Statistic.Value>
-                <Statistic.Label>Recovered</Statistic.Label>
-              </Statistic>
-              <Statistic>
-                <Statistic.Value>60,304</Statistic.Value>
-                <Statistic.Label>Died</Statistic.Label>
-              </Statistic>
-            </Statistic.Group>
-          </Segment>
+          <InfectionSection
+            waiting="23"
+            died="34"
+            recovered="69"
+            infected="60"
+          />
         </Grid.Column>
       </Grid.Row>
     </Grid>
+  );
+}
+
+function MenuSection() {
+  const login = () => {
+    axios
+      .get("http://localhost:8080/api/login")
+      .then(function(response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function() {
+        // always executed
+      });
+  };
+
+  const register = () => {
+    axios
+      .get("http://localhost:8080/api/register")
+      .then(function(response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function() {
+        // always executed
+      });
+  };
+  return (
+    <Segment clearing>
+      <Item>
+        <Button basic floated="right" size="mini" key="login" onClick={login}>
+          <Icon name="key" />
+          login
+        </Button>
+        <Button basic floated="right" size="mini" key="mini" onClick={register}>
+          <Icon name="edit" />
+          register
+        </Button>
+      </Item>
+    </Segment>
+  );
+}
+
+function MessageSection({ value }) {
+  useEffect(() => {
+    console.log("Message Loaded");
+  });
+
+  return <Message attached content={value} color="red" />;
+}
+
+function VaccineSection() {
+  const [index, set] = useState(0);
+  const transitions = useTransition(index, p => p, {
+    from: { opacity: 0, transform: "translate3d(100%,0,0)" },
+    enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
+    leave: { opacity: 0, transform: "translate3d(-50%,0,0)" }
+  });
+
+  const vaccineItems = [
+    ({ style }) => (
+      <animated.div style={{ ...style, background: "lightblue" }}>
+        Vaccine 1
+      </animated.div>
+    ),
+    ({ style }) => (
+      <animated.div style={{ ...style, background: "lightgreen" }}>
+        Vaccine 2
+      </animated.div>
+    ),
+    ({ style }) => (
+      <animated.div style={{ ...style, background: "lightpink" }}>
+        Vaccine 3
+      </animated.div>
+    )
+  ];
+  
+  useEffect(() => {
+    console.log("Vaccine Loaded");
+  });
+
+  const onClick = useCallback(() => set(state => (state + 1) % 3), []);
+  return (
+    <Item className="vaccineRow">
+      <div className="vaccine" onClick={onClick}>
+        {transitions.map(({ item, props, key }) => {
+          const Page = vaccineItems[item];
+          return <Page key={key} style={props} />;
+        })}
+      </div>
+    </Item>
+  );
+}
+
+function InfectionSection({ waiting, infected, recovered, died }) {
+  useEffect(() => {
+    console.log("Infection Loaded");
+  });
+
+  return (
+    <Segment>
+      <Statistic.Group widths="four">
+        <Statistic>
+          <Statistic.Value>{infected}</Statistic.Value>
+          <Statistic.Label>Infected</Statistic.Label>
+        </Statistic>
+        <Statistic>
+          <Statistic.Value>{recovered}</Statistic.Value>
+          <Statistic.Label>Recovered</Statistic.Label>
+        </Statistic>
+        <Statistic>
+          <Statistic.Value>{died} </Statistic.Value>
+          <Statistic.Label>Died</Statistic.Label>
+        </Statistic>
+        <Statistic>
+          <Statistic.Value>{waiting}</Statistic.Value>
+          <Statistic.Label>Awaiting Test Result</Statistic.Label>
+        </Statistic>
+      </Statistic.Group>
+    </Segment>
   );
 }
