@@ -1,8 +1,15 @@
 #!/bin/bash
 
-echo "generating output files.."
-
-mv build ../ncov/skeleton/src/main/resources/public
-
 clear
-echo "output files generated.."
+echo "automating output files..."
+
+cp -R build/* ../ncov/skeleton/src/main/resources/public
+
+echo "files copied to server location"
+
+cd ../ncov/skeleton
+
+mvn spring-boot:stop
+mvn clean install
+
+
