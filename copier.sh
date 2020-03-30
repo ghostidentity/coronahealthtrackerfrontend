@@ -9,7 +9,6 @@ echo "files copied to server location"
 
 cd ../ncov/skeleton
 
-mvn spring-boot:stop
-mvn clean install
+#mvn clean install
 
-
+echo "done."
