@@ -121,11 +121,14 @@ export default class Mainscreen extends Component {
                 <Segment.Group raised>
                   <Label attached="top">General Overview</Label>
                   <Segment>
-                    PUI: 895 <br />
-                    PUM: 23 <br />
-                    Infected: 3223 <br />
-                    Recovered: 2323 <br />
-                    Died: 3099
+                    New: 2,323
+                    <Divider />
+                    Infected: 34,223 <br />
+                    Recovered: 12,323 <br />
+                    Died: 18,099   <br />
+                    Awaiting Result: 3,223
+                    <Divider />
+                    <b> Total: 66, 968</b>
                   </Segment>
                 </Segment.Group>
               </Segment>
