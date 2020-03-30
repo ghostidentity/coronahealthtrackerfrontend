@@ -9,12 +9,29 @@ import {
   Item,
   Message,
   Segment,
-  Statistic
+  Statistic,
+  Container
 } from "semantic-ui-react";
 import "../styles/homepage.css";
 import axios from "axios";
 
 export default function Homepage() {
+  useEffect(() => {
+    console.log("Homepage component loaded");
+  });
+
+  const vaccines = [
+    {
+      data: {
+        title: "Remdesivir",
+        description:
+          "Remdesivir (development code GS-5734) is a novel antiviral drug in the class of nucleotide analogs. It was developed by Gilead Sciences as a treatment for Ebola virus disease and Marburg virus infections,[1] though it subsequently was found to show antiviral activity against other single stranded RNA viruses such as respiratory syncytial virus, Junin virus, Lassa fever virus, Nipah virus, Hendra virus, and the coronaviruses (including MERS and SARS viruses",
+        status: "Trial Stage",
+        release_date: "December 26, 2020"
+      }
+    }
+  ];
+
   return (
     <Grid>
       <Grid.Row>
@@ -29,7 +46,7 @@ export default function Homepage() {
         </Grid.Column>
 
         <Grid.Column width={16}>
-          <VaccineSection />
+          <VaccineSection data={vaccines} />
         </Grid.Column>
 
         <Grid.Column width={16}>
@@ -107,7 +124,12 @@ function MessageSection({ value }) {
   return <Message attached content={value} color="red" />;
 }
 
-function VaccineSection() {
+function VaccineSection({ data }) {
+  useEffect(() => {
+    console.log("Vaccine Loaded");
+  });
+
+  const vaccineItems = [];
   const [index, set] = useState(0);
   const transitions = useTransition(index, p => p, {
     from: { opacity: 0, transform: "translate3d(100%,0,0)" },
@@ -115,29 +137,22 @@ function VaccineSection() {
     leave: { opacity: 0, transform: "translate3d(-50%,0,0)" }
   });
 
-  const vaccineItems = [
-    ({ style }) => (
+  data.map(entry =>
+    vaccineItems.push(({ style }) => (
       <animated.div style={{ ...style, background: "lightblue" }}>
-        Vaccine 1
+        <Container textAlign='left'>
+          <Header as="h1">{entry.data.title}</Header>
+          <Divider />
+          <p>{entry.data.description}</p>
+        </Container>
       </animated.div>
-    ),
-    ({ style }) => (
-      <animated.div style={{ ...style, background: "lightgreen" }}>
-        Vaccine 2
-      </animated.div>
-    ),
-    ({ style }) => (
-      <animated.div style={{ ...style, background: "lightpink" }}>
-        Vaccine 3
-      </animated.div>
-    )
-  ];
-  
-  useEffect(() => {
-    console.log("Vaccine Loaded");
-  });
+    ))
+  );
 
-  const onClick = useCallback(() => set(state => (state + 1) % 3), []);
+  const onClick = useCallback(
+    () => set(state => (state + 1) % data.length),
+    []
+  );
   return (
     <Item className="vaccineRow">
       <div className="vaccine" onClick={onClick}>
