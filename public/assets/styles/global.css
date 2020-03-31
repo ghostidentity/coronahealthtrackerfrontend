@@ -1,12 +1,11 @@
 body {
-    font-family: 'Gruppo', cursive;
-    font-size: 10px;
-    background-color: #FCFCFC;
-  }
-
+  font-family: "Gruppo", cursive;
+  font-size: 10px;
+  background-color: #fcfcfc;
+}
 
 .overview {
-  font-family: 'Gruppo', cursive;
+  font-family: "Gruppo", cursive;
   font-size: 10px;
   background-color: white;
 }
@@ -25,6 +24,6 @@ footer {
 }
 
 footer p {
-  font-family: 'Gruppo', cursive;
+  font-family: "Gruppo", cursive;
   color: #777777;
 }

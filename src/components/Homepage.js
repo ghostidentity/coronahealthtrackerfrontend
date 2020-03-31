@@ -79,8 +79,18 @@ export default function Homepage() {
             </Grid.Column>
             <Grid.Column width={8}>
               <Container textAlign="right">
-                <Icon name="facebook" size="large" color="grey" onClick={() => console.log("facebook")}/>
-                <Icon name="linkedin" size="large" color="grey" onClick={() => console.log("linked")}/>
+                <Icon
+                  name="facebook"
+                  size="large"
+                  color="grey"
+                  onClick={() => console.log("facebook")}
+                />
+                <Icon
+                  name="linkedin"
+                  size="large"
+                  color="grey"
+                  onClick={() => console.log("linked")}
+                />
               </Container>
             </Grid.Column>
           </Grid.Row>
@@ -161,13 +171,28 @@ function VaccineSection({ data }) {
 
   data.map(entry =>
     vaccineItems.push(({ style }) => (
-      <animated.div style={{ ...style, background: "#FCFCFC", color: "blue" }}>
-        <Container textAlign="justified">
-          <Header as="h1">{entry.data.title}</Header>
-          <Divider />
-          <p>{entry.data.description}</p>
-        </Container>
-      </animated.div>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={13}>
+            <animated.div style={{ ...style, background: "#FCFCFC", color: "black" }}>
+                <Header as="h1">{entry.data.title}</Header>
+                <Divider />
+                <p>{entry.data.description}</p>
+                <Divider />
+                <Grid>
+                  <Grid.Row>
+                    <Grid.Column width={8}>
+                      <p>Status: {entry.data.status}</p>
+                    </Grid.Column>
+                    <Grid.Column width={8} textAlign="right">
+                      <p>Release Date: {entry.data.release_date}</p>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+            </animated.div>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     ))
   );
 
