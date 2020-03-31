@@ -172,20 +172,22 @@ function VaccineSection({ data }) {
   data.map(entry =>
     vaccineItems.push(({ style }) => (
       <animated.div style={{ ...style, background: "#FCFCFC", color: "black" }}>
-        <Header as="h1">{entry.data.title}</Header>
-        <Divider />
-        <p>{entry.data.description}</p>
-        <Divider />
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={8}>
-              <p>Status: {entry.data.status}</p>
-            </Grid.Column>
-            <Grid.Column width={8} textAlign="right">
-              Release Date: {entry.data.release_date}
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <Container textAlign="justified" fluid>
+          <Header as="h1">{entry.data.title}</Header>
+          <Divider />
+          <p>{entry.data.description}</p>
+          <Divider />
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={8}>
+                <p>Status: {entry.data.status}</p>
+              </Grid.Column>
+              <Grid.Column width={8} textAlign="right">
+                Release Date: {entry.data.release_date}
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
       </animated.div>
     ))
   );
@@ -195,22 +197,14 @@ function VaccineSection({ data }) {
     []
   );
   return (
-    <Grid>
-      <Grid.Row>
-        <Item className="vaccineRow">
-          <div className="vaccine" onClick={onClick}>
-            {transitions.map(({ item, props, key }) => {
-              const Page = vaccineItems[item];
-              return (
-                <Container textAlign="justified" fluid>
-                  <Page key={key} style={props} />
-                </Container>
-              );
-            })}
-          </div>
-        </Item>
-      </Grid.Row>
-    </Grid>
+    <Item className="vaccineRow">
+      <div className="vaccine" onClick={onClick}>
+        {transitions.map(({ item, props, key }) => {
+          const Page = vaccineItems[item];
+          return <Page key={key} style={props} />;
+        })}
+      </div>
+    </Item>
   );
 }
 
