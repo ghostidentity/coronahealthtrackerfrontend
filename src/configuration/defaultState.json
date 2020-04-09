@@ -1,4 +1,44 @@
 {
-    "title": "nCov Health Tracker",
-    "email": "proxshadow@gmail.com"
+    "application": {
+        "title": "nCov Health Tracker",
+        "version": "1",
+        "support": "proxyshadow@gmail.com",
+        "architect": "Mark Tagab"
+    },
+    "notification": {
+        "title": "code red",
+        "data": "Enhance community quarantine nationwide, effective today."
+    },
+    "security" : {
+        "token": "secrettoken",
+        "role": "admin"
+    },
+    "organization": {
+        "name": "",
+        "country": ""
+    },
+    "profile": {
+        "userid": "1",
+        "first_name": "Mark",
+        "last_name": "Tagab",
+        "email": "proxyshadow@gmail.com",
+        "address": "Mindanao, PH",
+        "position": "admin"
+    },
+    "admission": [],
+    "pickup": [],
+    "infection": {
+        "died": 1,
+        "infected": 1,
+        "recovered": 1,
+        "waiting": 1
+    },
+    "monitoring": [],
+    "control": [],
+    "reported": [],
+    "hospital": [],
+    "users": [],
+    "patients": [],
+    "advisory": [],
+    "vaccine": []
 }

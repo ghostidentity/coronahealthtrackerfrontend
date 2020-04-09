@@ -1,4 +1,4 @@
-import appReducers from "../reducers/index";
+import appReducers from "../reducers/";
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { customMiddleware } from './customMiddleware';
